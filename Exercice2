@@ -1,0 +1,51 @@
+def ajouter_etudiant():
+    Etudiant = {
+        "Nom": input ("Nom: "),
+        "Prenom": input ("Prenom: "),
+        "CIN": input ("CIN: "),
+        "Moyenne": float (input ("Moyenne: ")),
+    }
+    return Etudiant
+
+
+def afficher_etudiant(etudiants):
+    for i, j in etudiants.items():
+        print(f"{i} : {j}")
+
+
+etudiant = ajouter_etudiant()
+afficher_etudiant(etudiant)
+
+Etudiants = []
+for i in range(2):
+    print("Etudiant N° %d " % (i + 1))
+    Etudiant = ajouter_etudiant()
+    Etudiants.append(Etudiant)
+
+d = 1
+for i in Etudiants:
+    print ("Etudiant N° %d " % (d))
+    d += 1
+    afficher_etudiant(i)
+    print ("-------------------------\n")
+
+cin = input("CIN a chercher : ")
+for i in Etudiants:
+    if i["CIN"] == cin:
+        afficher_etudiant(i)
+        print("-------------------------\n")
+
+Etudiants_triee = sorted (Etudiants, key=lambda x: x["Moyenne"], reverse=True)
+for i in Etudiants_triee:
+    afficher_etudiant(i)
+
+for element in Etudiants:
+    if element["Moyenne"] == 0:
+        Etudiants.remove(element)
+
+for i in Etudiants:
+    d = 1
+    print("Etudiant N° %d " % (d))
+    d += 1
+    afficher_etudiant(i)
+    print("-------------------------\n")
